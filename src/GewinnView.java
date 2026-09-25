@@ -102,6 +102,7 @@ public class GewinnView extends JFrame {
         btnNochEinmal = new JButton("Noch einmal!");
         btnNochEinmal.setFont(new Font("SansSerif", Font.PLAIN, 14));
         btnNochEinmal.setPreferredSize(new Dimension(140, 32));
+        btnNochEinmal.setEnabled(false); // Initial deaktiviert
         bottomPanel.add(btnNochEinmal);
 
         // Zusammenfügen im Haupt-Panel
@@ -132,7 +133,9 @@ public class GewinnView extends JFrame {
             }
             lblGesamtPunkte.setText(String.valueOf(gesamt));
         }
-        // [Aktualisierungsstelle nach einer Runde]
+        // Bedienelemente umschalten (Sicherheits-Nachbesserung)
+        txtDeineZahl.setEnabled(false);
+        btnNochEinmal.setEnabled(true);
     }
 
     /**
@@ -145,7 +148,9 @@ public class GewinnView extends JFrame {
         lblRundenErgebnis.setText("Tippe eine Zahl von 1 bis 9");
         lblGesamtPunkte.setText("Gesamtpunkte: " + gesamtPunkte);
         txtDeineZahl.requestFocus();
-        // [Reset-Stelle für neue Runde]
+        // Bedienelemente wieder freigeben
+        txtDeineZahl.setEnabled(true);
+        btnNochEinmal.setEnabled(false);
     }
 
     public String getEingabeZahl() {
