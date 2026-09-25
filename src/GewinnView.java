@@ -132,7 +132,17 @@ public class GewinnView extends JFrame {
             }
             lblGesamtPunkte.setText(String.valueOf(gesamt));
         }
-        // [Aktualisierungsstelle nach einer Runde]
+        // Farbliche Rückmeldung der Labels
+        if (ergebnis > 0 || gewonnen) {
+            lblRundenErgebnis.setBackground(Color.GREEN);
+            lblGesamtPunkte.setBackground(Color.GREEN);
+        } else if (ergebnis < 0 || verloren) {
+            lblRundenErgebnis.setBackground(Color.RED);
+            lblGesamtPunkte.setBackground(Color.RED);
+        } else {
+            lblRundenErgebnis.setBackground(Color.WHITE);
+            lblGesamtPunkte.setBackground(Color.WHITE);
+        }
     }
 
     /**
@@ -145,7 +155,9 @@ public class GewinnView extends JFrame {
         lblRundenErgebnis.setText("Tippe eine Zahl von 1 bis 9");
         lblGesamtPunkte.setText("Gesamtpunkte: " + gesamtPunkte);
         txtDeineZahl.requestFocus();
-        // [Reset-Stelle für neue Runde]
+        // Hintergrundfarben wieder auf Weiß zurücksetzen
+        lblRundenErgebnis.setBackground(Color.WHITE);
+        lblGesamtPunkte.setBackground(Color.WHITE);
     }
 
     public String getEingabeZahl() {
