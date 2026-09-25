@@ -1,0 +1,12 @@
+# IntelliJ IDEA Projektdateien
+.idea/
+*.iml
+out/
+bin/
+
+# Kompilierte Java-Klassendateien
+*.class
+
+# Betriebssystem-spezifische Dateien
+.DS_Store
+Thumbs.db
