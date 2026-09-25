@@ -33,4 +33,34 @@ public class GewinnModel {
     public int getRundenErgebnis() {
         return this.rundenErgebnis;
     }
+
+    /**
+     * Berechnet eine zufällige Zahl von 1 bis 9 für den Computer.
+     */
+    public void berechneComputerZahl() {
+        this.computerZahl = (int) (Math.random() * 9) + 1;
+    }
+
+    /**
+     * Übernimmt die Spielerzahl, berechnet das Rundenergebnis
+     * und aktualisiert den Gesamtpunktestand.
+     *
+     * @param spielerZahl die vom Spieler eingegebene Zahl (1-9)
+     */
+    public void berechneRunde(int spielerZahl) {
+        this.spielerZahl = spielerZahl;
+        berechneComputerZahl();
+
+        int differenz = Math.abs(this.spielerZahl - this.computerZahl);
+
+        if (differenz == 0) {
+            this.rundenErgebnis = 20; // Gleiche Zahl getippt
+        } else if (differenz == 1) {
+            this.rundenErgebnis = 5;  // Zahl um 1 größer oder kleiner
+        } else {
+            this.rundenErgebnis = -10; // Andere Zahl getippt
+        }
+
+        this.gesamtPunkte += this.rundenErgebnis;
+    }
 }
