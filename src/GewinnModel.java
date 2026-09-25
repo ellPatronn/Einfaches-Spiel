@@ -63,4 +63,22 @@ public class GewinnModel {
 
         this.gesamtPunkte += this.rundenErgebnis;
     }
+
+    /**
+     * Prüft, ob der Spieler mindestens 100 Punkte erreicht hat.
+     *
+     * @return true wenn gewonnen, sonst false
+     */
+    public boolean hatGewonnen() {
+        return this.gesamtPunkte >= 100;
+    }
+
+    /**
+     * Prüft, ob der Spieler 0 oder weniger Punkte hat.
+     *
+     * @return true wenn verloren, sonst false
+     */
+    public boolean hatVerloren() {
+        return this.gesamtPunkte <= 0;
+    }
 }
