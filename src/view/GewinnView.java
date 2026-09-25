@@ -115,6 +115,17 @@ public class GewinnView extends JFrame {
         }
         txtDeineZahl.setEnabled(false);
         btnNochEinmal.setEnabled(true);
+
+        if (ergebnis > 0 || gewonnen) {
+            lblRundenErgebnis.setBackground(Color.GREEN);
+            lblGesamtPunkte.setBackground(Color.GREEN);
+        } else if (ergebnis < 0 || verloren) {
+            lblRundenErgebnis.setBackground(Color.RED);
+            lblGesamtPunkte.setBackground(Color.RED);
+        } else {
+            lblRundenErgebnis.setBackground(Color.WHITE);
+            lblGesamtPunkte.setBackground(Color.WHITE);
+        }
     }
 
     public void resetRunde(int gesamtPunkte) {
@@ -125,6 +136,9 @@ public class GewinnView extends JFrame {
         txtDeineZahl.requestFocus();
         txtDeineZahl.setEnabled(true);
         btnNochEinmal.setEnabled(false);
+
+        lblRundenErgebnis.setBackground(Color.WHITE);
+        lblGesamtPunkte.setBackground(Color.WHITE);
     }
 
     public String getEingabeZahl() {
