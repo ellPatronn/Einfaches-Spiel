@@ -133,9 +133,21 @@ public class GewinnView extends JFrame {
             }
             lblGesamtPunkte.setText(String.valueOf(gesamt));
         }
-        // Bedienelemente umschalten (Sicherheits-Nachbesserung)
+        // Bedienelemente umschalten (aus version-1.1)
         txtDeineZahl.setEnabled(false);
         btnNochEinmal.setEnabled(true);
+
+        // Farbliche Rückmeldung der Labels (aus version-2.0)
+        if (ergebnis > 0 || gewonnen) {
+            lblRundenErgebnis.setBackground(Color.GREEN);
+            lblGesamtPunkte.setBackground(Color.GREEN);
+        } else if (ergebnis < 0 || verloren) {
+            lblRundenErgebnis.setBackground(Color.RED);
+            lblGesamtPunkte.setBackground(Color.RED);
+        } else {
+            lblRundenErgebnis.setBackground(Color.WHITE);
+            lblGesamtPunkte.setBackground(Color.WHITE);
+        }
     }
 
     /**
@@ -148,9 +160,13 @@ public class GewinnView extends JFrame {
         lblRundenErgebnis.setText("Tippe eine Zahl von 1 bis 9");
         lblGesamtPunkte.setText("Gesamtpunkte: " + gesamtPunkte);
         txtDeineZahl.requestFocus();
-        // Bedienelemente wieder freigeben
+        // Bedienelemente wieder freigeben (aus version-1.1)
         txtDeineZahl.setEnabled(true);
         btnNochEinmal.setEnabled(false);
+
+        // Hintergrundfarben wieder auf Weiß zurücksetzen (aus version-2.0)
+        lblRundenErgebnis.setBackground(Color.WHITE);
+        lblGesamtPunkte.setBackground(Color.WHITE);
     }
 
     public String getEingabeZahl() {
